@@ -1,11 +1,14 @@
 import './style.css'
+import AAA from './classes/AAA.js'
 
 console.log('js loaded')
 
-function addAAA(elem) {
-    elem.innerHTML = 'AAA'
-}
+var aaaInstance = new AAA('johndoe')
 
-var minshCtn = document.getElementById('minsh-container')
-minshCtn.classList.add('red-color-div')
-addAAA(minshCtn)
+aaaInstance.loadToDOM((() => {
+    var d = document.createElement('div')
+    d.classList.add('red-color-div')
+    document.querySelector('body').appendChild(d)
+    return d
+})()
+)
